@@ -475,10 +475,9 @@
                 <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Available for freelance commissions and full-time management roles.</p>
             </div>
 
-            <!-- REPLACED: Functional Contact Form -->
-            <form name="contact" method="POST" data-netlify="true" class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm text-left space-y-6">
-                <!-- Hidden Input for Netlify -->
-                <input type="hidden" name="form-name" value="contact">
+            <!-- REPLACED: Formspree Contact Form (Free, works with Gmail) -->
+            <!-- INSTRUCTION: Replace 'YOUR_FORM_ID' in the action URL below with your actual Formspree ID -->
+            <form id="contact-form" action="https://formspree.io/f/xwvnedyn" method="POST" class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm text-left space-y-6">
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
@@ -496,8 +495,11 @@
                     <textarea name="message" id="message" rows="4" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition-all"></textarea>
                 </div>
 
+                <!-- Status Message Area -->
+                <p id="my-form-status" class="text-center text-sm font-medium"></p>
+
                 <div class="text-center">
-                    <button type="submit" class="inline-block bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform">
+                    <button type="submit" id="submit-btn" class="inline-block bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform">
                         Send Message
                     </button>
                 </div>
@@ -589,6 +591,61 @@
                 });
             });
         });
+
+        // ----------------------------------------------------
+        // FORMSPREE AJAX SUBMISSION LOGIC
+        // ----------------------------------------------------
+        const form = document.getElementById("contact-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const status = document.getElementById("my-form-status");
+            const btn = document.getElementById("submit-btn");
+            const data = new FormData(event.target);
+            
+            // UI Loading State
+            btn.disabled = true;
+            btn.textContent = "Sending...";
+            status.textContent = "";
+            status.className = "text-center text-sm font-medium text-slate-500";
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.textContent = "Thanks! Your message has been sent.";
+                    status.className = "text-center text-sm font-medium text-green-600 dark:text-green-400 mt-4";
+                    form.reset();
+                    btn.textContent = "Message Sent";
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.textContent = "Send Message";
+                    }, 3000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.textContent = "Oops! There was a problem submitting your form";
+                        }
+                        status.className = "text-center text-sm font-medium text-red-600 dark:text-red-400 mt-4";
+                        btn.disabled = false;
+                        btn.textContent = "Try Again";
+                    })
+                }
+            }).catch(error => {
+                status.textContent = "Oops! There was a problem submitting your form";
+                status.className = "text-center text-sm font-medium text-red-600 dark:text-red-400 mt-4";
+                btn.disabled = false;
+                btn.textContent = "Try Again";
+            });
+        }
+        
+        if(form) form.addEventListener("submit", handleSubmit);
 
         // ----------------------------------------------------
         // DARK MODE TOGGLE LOGIC
