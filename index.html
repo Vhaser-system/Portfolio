@@ -3,343 +3,564 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <!-- CRITICAL FIX 1: The Viewport Tag restored -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Julian Visser | Software Developer</title>
+    <title>Julian Visser | Project Manager and Writer</title>
     <meta name="description"
-        content="Professional portfolio of a software developer specializing in modern web technologies.">
-
+        content="Portfolio of a professional Project Manager and Writer specializing in technical, creative, and copy writing.">
     <!-- OPEN GRAPH TAGS -->
     <meta property="og:title" content="Julian Visser | Software Developer Portfolio">
     <meta property="og:description"
-        content="Check out my latest full-stack projects and technical skills. Built with HTML5 and Tailwind CSS.">
+        content="Explore my writing methodology, intellectual property, and professional experience.">
     <meta property="og:image" content="images/profile.jpg">
-    <meta property="og:url" content="https://your-future-url.com">
+    <meta property="og:url" content="https://bespoke-bombolone-9271e4.netlify.app">
     <meta property="og:type" content="website">
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="images/profile.jpg">
 
+    <!-- CRITICAL: Dark Mode Script (Must be in HEAD to prevent flash of wrong theme) -->
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind Config: Adjusted Brand Colors for Contrast -->
+    <!-- TAILWIND CONFIG -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         brand: {
+                            50: '#fdf4ff', // Shifted to a more "Creative/Writer" Purple/Slate vibe or kept Blue? 
+                            // Let's keep the professional Blue but maybe slightly more Slate-ish for a writer.
+                            // actually, keeping the Blue/Slate theme is professional.
                             50: '#f0f9ff',
                             100: '#e0f2fe',
-                            // FIX: Made 500 and 600 darker to pass WCAG AA contrast on white backgrounds
-                            500: '#0284c7', // Was 0ea5e9 (too light)
-                            600: '#0369a1', // Was 0284c7
+                            500: '#0284c7', 
+                            600: '#0369a1',
                             700: '#0c4a6e',
                             900: '#082f49',
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'], // Added Serif for writing samples
                     }
                 }
             }
         }
     </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+ <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Merriweather', serif; }
     </style>
 </head>
-<!-- FIX: Changed text-slate-800 to slate-900 for maximum readability -->
 
-<body class="bg-slate-50 text-slate-900 antialiased">
+<!-- DARK MODE: Added dark:bg-slate-900 and dark:text-white -->
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
 
     <!-- NAVIGATION -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <nav class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0 flex items-center">
-                    <!-- FIX: Darker brand text -->
-                    <span class="text-2xl font-bold text-slate-900">Dev<span
-                            class="text-brand-600">Portfolio</span></span>
+                    <!-- Changed Brand Name -->
+                    <span class="text-2xl font-bold text-slate-900 dark:text-white">Writer<span class="text-brand-600 dark:text-brand-500">Portfolio</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="#expertise" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Expertise</a>
+                    <a href="#experience" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Experience</a>
+                    <a href="#portfolio" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Projects & IP</a>
+                    <a href="#process" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Methodology</a>
+                    <a href="#contact" class="bg-brand-600 text-white hover:bg-brand-700 px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm">Contact</a>
+                    
+                    <!-- THEME TOGGLE (Desktop) -->
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
                 </div>
 
-                <div class="hidden md:flex space-x-8">
-                    <!-- FIX: Hover colors darkened -->
-                    <a href="#home"
-                        class="text-slate-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                    <a href="#about"
-                        class="text-slate-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                    <a href="#skills"
-                        class="text-slate-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                    <a href="#projects"
-                        class="text-slate-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                    <!-- FIX: Button bg darkened (brand-600) -->
-                    <a href="#contact"
-                        class="bg-brand-600 text-white hover:bg-brand-700 px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm">Contact
-                        Me</a>
-                </div>
-
-                <div class="flex items-center md:hidden">
-                    <!-- FIX: Added aria-label for accessibility -->
-                    <button id="mobile-menu-btn" aria-label="Open Menu"
-                        class="text-slate-700 hover:text-brand-600 focus:outline-none p-2">
+                <!-- Mobile Menu Button & Toggle -->
+                <div class="flex items-center gap-4 md:hidden">
+                    <button id="theme-toggle-mobile" aria-label="Toggle Dark Mode" class="p-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+                    <button id="mobile-menu-btn" aria-label="Open Menu" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 focus:outline-none p-2">
                         <i data-lucide="menu" class="h-6 w-6"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home"
-                    class="block text-slate-700 hover:text-brand-600 hover:bg-slate-50 px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about"
-                    class="block text-slate-700 hover:text-brand-600 hover:bg-slate-50 px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills"
-                    class="block text-slate-700 hover:text-brand-600 hover:bg-slate-50 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#projects"
-                    class="block text-slate-700 hover:text-brand-600 hover:bg-slate-50 px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#contact"
-                    class="block text-brand-600 font-bold hover:bg-slate-50 px-3 py-2 rounded-md text-base">Contact
-                    Me</a>
+                <a href="#home" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#expertise" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Core Expertise</a>
+                <a href="#experience" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#portfolio" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Projects & IP</a>
+                <a href="#process" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Methodology</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="relative pt-20 pb-32 overflow-hidden">
+    <!-- HERO SECTION (Professional Summary) -->
+    <section id="home" class="relative pt-20 pb-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center">
             <div class="w-full md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
-                    Building digital <br>
-                    <!-- FIX: Darker brand text -->
-                    <span class="text-brand-600">experiences that matter.</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+                    Turning complex ideas into <br>
+                    <span class="text-brand-600 dark:text-brand-400">compelling narratives.</span>
                 </h1>
-                <!-- FIX: Darker text (slate-700) for readability -->
-                <p class="text-lg text-slate-700 mb-8 max-w-lg mx-auto md:mx-0">
-                    I'm a Full Stack Developer passionate about clean code, user-centric design, and solving complex
-                    problems with simple solutions.
+                <!-- Professional Summary Text -->
+                <p class="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-lg mx-auto md:mx-0 font-serif leading-relaxed">
+                    I am a Project Manager and Writer with over 3 years of experience bridging the gap between creative vision and structured execution. I specialize in technical documentation, scriptwriting, and managing creative workflows.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <a href="#projects"
-                        class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:py-4 md:text-lg transition-all shadow-lg">
-                        View My Work
+                    <a href="#portfolio" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:py-4 md:text-lg transition-all shadow-lg">
+                        View Writing Samples
                     </a>
-                    <a href="https://github.com" target="_blank"
-                        class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-base font-medium rounded-md text-slate-700 bg-white hover:bg-slate-50 md:py-4 md:text-lg transition-all">
-                        <i data-lucide="github" class="w-5 h-5 mr-2"></i> GitHub
+                    <a href="#experience" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 dark:border-slate-700 text-base font-medium rounded-md text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 md:py-4 md:text-lg transition-all">
+                        View Experience
                     </a>
                 </div>
             </div>
-
+            
             <div class="w-full md:w-1/2 flex justify-center">
-                <div
-                    class="relative w-64 h-64 md:w-96 md:h-96 bg-brand-100 rounded-full flex items-center justify-center overflow-hidden border-4 border-white shadow-2xl">
-                    <!-- FIX: Added explicit width/height to match the largest displayed size (w-96 = 384px) to prevent layout shift -->
-                    <img src="images/profile.jpg" alt="Julian Visser Profile Picture" width="384" height="384"
-                        class="w-full h-full object-cover">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-brand-100 dark:bg-brand-900 rounded-full flex items-center justify-center overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
+                    <img src="images/profile.jpg" alt="Profile" width="320" height="320" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="py-20 bg-white">
+    <!-- CORE WRITING EXPERTISE (Genres, Formats) -->
+    <section id="expertise" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Technical Skills</h2>
-                <p class="mt-4 text-lg text-slate-700">Technologies I use to bring ideas to life.</p>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Core Writing Expertise</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Blending creativity with technical precision.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <!-- Skill Card 1 -->
-                <div
-                    class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow text-center border border-slate-200">
-                    <!-- FIX: Darker orange for icon -->
-                    <div
-                        class="w-12 h-12 bg-orange-100 text-orange-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="file-code" class="w-6 h-6"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Expertise 1 -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-semibold text-slate-900">HTML5 & CSS3</h3>
-                    <p class="text-sm text-slate-600 mt-2">Semantic markup & Responsive layouts</p>
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Creative Writing</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Novels, short stories, and narrative-driven content focusing on character development.</p>
                 </div>
 
-                <!-- Skill Card 2 -->
-                <div
-                    class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow text-center border border-slate-200">
-                    <div
-                        class="w-12 h-12 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="zap" class="w-6 h-6"></i>
+                <!-- Expertise 2 -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-semibold text-slate-900">JavaScript (ES6+)</h3>
-                    <p class="text-sm text-slate-600 mt-2">DOM Manipulation & Async Logic</p>
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Technical Writing</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">SOPs, manuals, white papers, and complex documentation simplified for end-users.</p>
                 </div>
 
-                <!-- Skill Card 3 -->
-                <div
-                    class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow text-center border border-slate-200">
-                    <div
-                        class="w-12 h-12 bg-cyan-100 text-cyan-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="layout" class="w-6 h-6"></i>
+                <!-- Expertise 3 -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="mic" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-semibold text-slate-900">React & Tailwind</h3>
-                    <p class="text-sm text-slate-600 mt-2">Component-based Architecture</p>
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Scripts & Radio</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Dialogue writing for scripts and radio spots.</p>
                 </div>
 
-                <!-- Skill Card 4 -->
-                <div
-                    class="p-6 bg-slate-50 rounded-xl hover:shadow-md transition-shadow text-center border border-slate-200">
-                    <div
-                        class="w-12 h-12 bg-green-100 text-green-700 rounded-lg flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="server" class="w-6 h-6"></i>
+                <!-- Expertise 4 -->
+                <div class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-md transition-all border border-slate-200 dark:border-slate-700">
+                    <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="clipboard-list" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-semibold text-slate-900">Node.js</h3>
-                    <p class="text-sm text-slate-600 mt-2">Backend API Development</p>
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">Project Management</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">Agile workflows, editorial calendars, and managing creative teams.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="py-20 bg-slate-50">
+    <!-- PROFESSIONAL WRITING EXPERIENCE (Timeline) -->
+    <section id="experience" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Professional Experience</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">My journey in independent writing and management.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Role 1 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Freelance Writer & Project Manager</h3>
+                            <p class="text-brand-600 dark:text-brand-400 font-medium">Independent Contractor</p>
+                        </div>
+                        <span class="text-sm text-slate-500 dark:text-slate-400 mt-2 md:mt-0">2023 - Present</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 text-sm">
+                        <li>Oversaw end-to-end execution of complex creative writing projects, applying structured workflow management to meet strict deadlines.</li>
+                        <li>Developed expertise in establishing systematic procedures to ensure quality standards. </li>
+                        <li>Maintained disciplined daily schedules to balance administrative tasks, research, and creative writing.</li>
+                        <li>Executed a rigorous 14-day sprint, moving from concept to a polished 8,000-word draft that is Climate Dispatcher.</li>                        
+                    </ul>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Animation Production Assistant</h3>
+                            <p class="text-brand-600 dark:text-brand-400 font-medium">Internship</p>
+                        </div>
+                        <span class="text-sm text-slate-500 dark:text-slate-400 mt-2 md:mt-0">2021 - 2022</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 text-sm">
+                        <li>Tracked animation deliverables and communications between diverse teams to maintain project schedules.</li>
+                        <li>Handled ad-hoc logistical challenges and physical office tasks with a "solution-first" mindset in a fast-paced environment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRITING PROJECTS & IP (Copyrighted Works) -->
+    <section id="portfolio" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900">Learning Path & Projects</h2>
-                <p class="mt-4 text-lg text-slate-700">A selection of my recent work and studies.</p>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Projects & Intellectual Property</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Copyrighted works and featured publications.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <article
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-200 flex flex-col h-full">
-                    <div class="h-48 bg-slate-200 flex items-center justify-center">
-                        <i data-lucide="image" class="w-12 h-12 text-slate-400"></i>
+                <!-- Project 1: Book/Novel -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <i data-lucide="book" class="w-12 h-12 text-slate-400"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex items-center gap-2 mb-3">
-                            <!-- FIX: Tags contrast improved -->
-                            <span
-                                class="px-2 py-1 bg-brand-100 text-brand-800 text-xs font-semibold rounded-full">React</span>
-                            <span
-                                class="px-2 py-1 bg-slate-200 text-slate-700 text-xs font-semibold rounded-full">API</span>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold rounded">Action-Crime Thriller</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded">Copyright 2021</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">E-Commerce Dashboard</h3>
-                        <p class="text-slate-700 text-sm mb-4 flex-grow">
-                            A fully responsive dashboard tracking sales, inventory, and user metrics using React and
-                            Recharts.
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Blank Cheque</h3>
+                        <p class="text-slate-700 dark:text-slate-400 text-sm mb-4 font-serif italic">
+                            "A gripping tale of gritty suspense..."
                         </p>
-                        <div class="flex gap-3 mt-auto">
-                            <!-- FIX: Added aria-labels to links -->
-                            <a href="#" aria-label="View Live Demo of Dashboard"
-                                class="text-sm font-semibold text-brand-600 hover:text-brand-700 flex items-center">
-                                Live Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
-                            </a>
-                            <a href="#" aria-label="View Dashboard Code"
-                                class="text-sm font-semibold text-slate-600 hover:text-slate-800 flex items-center">
-                                Code <i data-lucide="github" class="w-4 h-4 ml-1"></i>
-                            </a>
-                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            A over 8,000-word script exploring themes of survival and moral conflict...
+                        </p>
+                        <!-- NEW: Read Sample Button -->
+                        <!-- NOTE: Replace 'documents/sample.pdf' with your actual file path -->
+                        <button onclick="openDocument('The Blank Cheque Preview', 'documents/Blank%20Cheque%20Screenplay_Preview.pdf')" class="w-full mt-auto flex items-center justify-center gap-2 px-4 py-2 border border-brand-600 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors font-semibold text-sm">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Read Excerpt
+                        </button>
                     </div>
                 </article>
 
-                <!-- Project 2 -->
-                <article
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-200 flex flex-col h-full">
-                    <div class="h-48 bg-slate-200 flex items-center justify-center">
-                        <i data-lucide="image" class="w-12 h-12 text-slate-400"></i>
+                <!-- Project 2: Script -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <i data-lucide="film" class="w-12 h-12 text-slate-400"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-2 py-1 bg-brand-100 text-brand-800 text-xs font-semibold rounded-full">Python</span>
-                            <span
-                                class="px-2 py-1 bg-slate-200 text-slate-700 text-xs font-semibold rounded-full">Automation</span>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-bold rounded">Action</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded">Fiction</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Task Automator Script</h3>
-                        <p class="text-slate-700 text-sm mb-4 flex-grow">
-                            A Python script that automates file organization and generates weekly reports from raw data.
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Herocall: Pilot Episode</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            Wrote 10 episodes for an animated series focused on heroes and people who want to be heroes.
                         </p>
-                        <div class="flex gap-3 mt-auto">
-                            <a href="#" aria-label="View Automator Code"
-                                class="text-sm font-semibold text-slate-600 hover:text-slate-800 flex items-center">
-                                Code <i data-lucide="github" class="w-4 h-4 ml-1"></i>
-                            </a>
-                        </div>
+                        <!-- NEW: Read Sample Button -->
+                        <button onclick="openDocument('Herocall: Pilot Episode Preview', 'documents/Herocall%20episode%201_%20Pilot_Preview.pdf')" class="w-full mt-auto flex items-center justify-center gap-2 px-4 py-2 border border-brand-600 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors font-semibold text-sm">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Read Script
+                        </button>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
-                <article
-                    class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all border border-slate-200 flex flex-col h-full">
-                    <div class="h-48 bg-slate-200 flex items-center justify-center">
-                        <i data-lucide="image" class="w-12 h-12 text-slate-400"></i>
+                <!-- Project 3: Technical -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <i data-lucide="file-text" class="w-12 h-12 text-slate-400"></i>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex items-center gap-2 mb-3">
-                            <span
-                                class="px-2 py-1 bg-brand-100 text-brand-800 text-xs font-semibold rounded-full">HTML/CSS</span>
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold rounded">Western</span>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2">Agency Landing Page</h3>
-                        <p class="text-slate-700 text-sm mb-4 flex-grow">
-                            High-conversion landing page focused on performance and accessibility.
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Waiting for the Right Moment Short Story</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            A slow-burn Western short story on a unknown but notorious outlaw. 
                         </p>
-                        <div class="flex gap-3 mt-auto">
-                            <a href="#" aria-label="View Live Demo of Agency Page"
-                                class="text-sm font-semibold text-brand-600 hover:text-brand-700 flex items-center">
-                                Live Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
-                            </a>
-                        </div>
+                        <!-- NEW: Read Sample Button -->
+                        <button onclick="openDocument('Short Story 1 Preview', 'documents/Waiting%20for%20the%20Right%20moment_Preview.pdf')" class="w-full mt-auto flex items-center justify-center gap-2 px-4 py-2 border border-brand-600 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors font-semibold text-sm">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Read Sample
+                        </button>
                     </div>
                 </article>
+
+                <!-- Project 4: Creative Brief -->
+                <article class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <i data-lucide="file-text" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs font-bold rounded">Sci-fi</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded">Speculative Fiction</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Climate Dispatcher Short Story</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            A sci-fi short story about a disgraced climate scientist tasked with saving the world from the climate and his team of highly advanced, dysfunctional AIs.
+                        </p>
+                        <!-- NEW: Read Sample Button -->
+                        <button onclick="openDocument('Short Story 2 Preview', 'documents/Climate%20Dispatcher_Preview.pdf')" class="w-full mt-auto flex items-center justify-center gap-2 px-4 py-2 border border-brand-600 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors font-semibold text-sm">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Read Script
+                        </button>
+                    </div>
+                </article>                
+            </div>
+            <!-- NEW: INTELLECTUAL PROPERTY NOTICE -->
+            <div class="mt-16 p-6 bg-slate-100 dark:bg-slate-800 border-l-4 border-brand-600 dark:border-brand-500 rounded-r-lg shadow-sm">
+                <div class="flex items-start mb-4">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="shield-alert" class="h-6 w-6 text-brand-600 dark:text-brand-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Intellectual Property Notice</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-1">
+                            The writing samples provided in this portfolio are for viewing purposes only.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm border-t border-slate-200 dark:border-slate-700 pt-4 mt-2">
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white mb-1 uppercase tracking-wider text-xs">Permissions</strong>
+                        <p class="text-slate-600 dark:text-slate-400">You may read and share links to this portfolio.</p>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white mb-1 uppercase tracking-wider text-xs">Restrictions</strong>
+                        <p class="text-slate-600 dark:text-slate-400">You may not download (except for personal, non-commercial offline reading), modify, sell, or claim these works as your own.</p>
+                    </div>
+                    <div>
+                        <strong class="block text-slate-900 dark:text-white mb-1 uppercase tracking-wider text-xs">Inquiries</strong>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            For licensing, publishing rights, or reprint permissions, please contact me at 
+                            <a href="mailto:your.email@example.com" class="text-brand-600 dark:text-brand-400 hover:underline font-medium">visserjulian@gmail.com</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WRITING METHODOLOGY & PROCESS -->
+    <section id="process" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Methodology & Process</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">My approach to quality control and creative flow.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-brand-100 dark:bg-brand-900 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400 font-bold text-xl">1</div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Research & Discovery</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Deep dive into subject matter, audience analysis, and competitor review to establish a solid foundation.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-brand-100 dark:bg-brand-900 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400 font-bold text-xl">2</div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Drafting & Structuring</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Creating the narrative arc using structured frameworks. Focusing on pacing, tone, themes and clarity.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-brand-100 dark:bg-brand-900 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400 font-bold text-xl">3</div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Quality Control</h3>
+                    <p class="text-slate-600 dark:text-slate-400">Rigorous editing for grammar, style consistency, and factual accuracy before final delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & ADDITIONAL EXPERIENCE -->
+    <section class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300 border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Education -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
+                        <i data-lucide="graduation-cap" class="w-6 h-6 mr-3 text-brand-600 dark:text-brand-400"></i> Education
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="pl-4 border-l-2 border-slate-200 dark:border-slate-700">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Bachelor of Digital Media Management</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Breda University of Applied Sciences, 2023</p>
+                        </div>
+                        <div class="pl-4 border-l-2 border-slate-200 dark:border-slate-700">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Internationational Baccalaureate Diploma</h3>
+                            <p class="text-slate-600 dark:text-slate-400">Rotterdam International Secondary School, 2018</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Experience -->
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
+                        <i data-lucide="radio" class="w-6 h-6 mr-3 text-brand-600 dark:text-brand-400"></i> Additional Experience
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Radio Broadcasting</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Hosted a weekly radio show, hosting guests and friends with game-related segments.</p>
+                            <!-- ADDED: Video Button -->
+                            <!-- UPDATED: Pointing to YouTube Embed format as the professional standard -->
+                            <!-- Replace 'VIDEO_ID' with your actual YouTube Unlisted Video ID -->
+                            <button type="button" onclick="openDocument('Radio Broadcasting Sample', 'documents/The%20Not%20so%20Early%20Show.mp4')" class="mt-3 flex items-center gap-2 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors">
+                                <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Visual Promo Reel
+                            </button>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Animation Production Assistant</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Managed scripts, schedules and visual storytelling for indie animation projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS & SOFTWARE -->
+    <section class="py-12 bg-brand-50 dark:bg-slate-800/50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-wider text-sm">Tools & Software</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">AI Workflow management</span>
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">Cursor / Anti-gravity</span>
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">Microsoft Office Suite</span>
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">Spreadsheets</span>
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">GitHub</span>
+                <span class="px-4 py-2 bg-white dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-200 shadow-sm text-sm font-medium">Adobe Creative Cloud</span>
             </div>
         </div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900">Get In Touch</h2>
-                <p class="mt-4 text-lg text-slate-700">Interested in working together? Send me a message.</p>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Get In Touch</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Available for freelance commissions and full-time management roles.</p>
             </div>
 
-            <!-- MAILTO LINK REPLACEMENT -->
-            <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 text-center shadow-sm">
-                <h3 class="text-xl font-bold text-slate-900 mb-4">Let's Connect</h3>
-                <p class="text-slate-700 mb-8">I'm currently open to new opportunities and collaborations.</p>
-                <a href="mailto:your.email@example.com"
-                    class="inline-block bg-brand-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-brand-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform">
-                    Send an Email
-                </a>
-            </div>
+            <!-- REPLACED: Functional Contact Form -->
+            <form name="contact" method="POST" data-netlify="true" class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm text-left space-y-6">
+                <!-- Hidden Input for Netlify -->
+                <input type="hidden" name="form-name" value="contact">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Name</label>
+                        <input type="text" name="name" id="name" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                        <input type="email" name="email" id="email" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition-all">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                    <textarea name="message" id="message" rows="4" required class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-brand-500 outline-none transition-all"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="inline-block bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform">
+                        Send Message
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 
+    <!-- NEW: DOCUMENT PREVIEW MODAL -->
+    <!-- This is a hidden popup that appears when you click 'Read Sample' -->
+    <div id="doc-modal" class="fixed inset-0 z-[60] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity opacity-0" id="doc-modal-backdrop"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-lg bg-white dark:bg-slate-900 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl h-[80vh] flex flex-col border border-slate-200 dark:border-slate-700 opacity-0 scale-95" id="doc-modal-panel">
+                    
+                    <!-- Header -->
+                    <div class="bg-white dark:bg-slate-900 px-4 py-3 sm:px-6 flex justify-between items-center border-b border-slate-200 dark:border-slate-700">
+                        <h3 class="text-lg font-semibold leading-6 text-slate-900 dark:text-white" id="modal-title">Document Preview</h3>
+                        <button type="button" onclick="closeDocument()" class="rounded-md bg-white dark:bg-slate-900 text-slate-400 hover:text-slate-500 focus:outline-none">
+                            <span class="sr-only">Close</span>
+                            <i data-lucide="x" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+
+                    <!-- Body (The PDF Viewer) -->
+                    <div class="flex-grow bg-slate-100 dark:bg-slate-800 relative">
+                        <!-- We use an iframe to embed the PDF. #toolbar=0 attempts to hide download buttons -->
+                        <iframe id="doc-frame" src="" class="w-full h-full" frameborder="0"></iframe>
+                        
+                        <!-- Fallback/Loading message -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                            <p class="text-slate-500">Loading document...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
-    <!-- FIX: text-slate-500 on slate-900 is too dark. Changed to text-slate-400 (lighter gray) -->
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0 text-center md:text-left">
-                <span class="text-xl font-bold text-white">Dev<span class="text-brand-500">Portfolio</span></span>
-                <p class="text-sm mt-2">&copy; <span id="year"></span> Julian Visser. All rights reserved.</p>
+    <footer class="bg-slate-900 dark:bg-black text-slate-400 py-12 border-t border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-white">Writer<span class="text-brand-500">Portfolio</span></span>
+                    <p class="text-sm mt-2">&copy; 2019 - <span id="year"></span> Julian Visser. All rights reserved.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" aria-label="LinkedIn Profile" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" aria-label="Medium/Blog Profile" class="hover:text-white transition-colors"><i data-lucide="pen-tool" class="w-5 h-5"></i></a>
+                </div>
             </div>
 
-            <!-- FIX: CRITICAL ARIA-LABEL ADDITIONS -->
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" aria-label="GitHub Profile" class="hover:text-white transition-colors"><i
-                        data-lucide="github" class="w-5 h-5"></i></a>
-                <a href="#" aria-label="LinkedIn Profile" class="hover:text-white transition-colors"><i
-                        data-lucide="linkedin" class="w-5 h-5"></i></a>
-                <a href="#" aria-label="Twitter Profile" class="hover:text-white transition-colors"><i
-                        data-lucide="twitter" class="w-5 h-5"></i></a>
+            <!-- NEW: Sub-Footer Legal Disclaimer -->
+            <!-- Placed "right under" the main footer content with a separator line -->
+            <div class="border-t border-slate-800 pt-8 mt-8 text-center md:text-left">
+                <p class="text-xs text-slate-600 dark:text-slate-500 leading-relaxed max-w-4xl mx-auto md:mx-0">
+                    <strong>Notice:</strong> All content on this website, including text, stories, and excerpts, is the intellectual property of Julian Visser unless otherwise noted. No part of this site may be reproduced, distributed, or transmitted in any form or by any means without prior written permission, except for brief quotations in reviews.
+                </p>
             </div>
         </div>
     </footer>
@@ -347,6 +568,7 @@
     <script>
         lucide.createIcons();
 
+        // Navigation Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -354,8 +576,10 @@
             menu.classList.toggle('hidden');
         });
 
+        // Date Logic
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -365,7 +589,92 @@
                 });
             });
         });
+
+        // ----------------------------------------------------
+        // DARK MODE TOGGLE LOGIC
+        // ----------------------------------------------------
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+
+        // Function to toggle the theme
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Attach event listeners to buttons
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // ----------------------------------------------------
+        // DOCUMENT MODAL LOGIC
+        // ----------------------------------------------------
+        const modal = document.getElementById('doc-modal');
+        const backdrop = document.getElementById('doc-modal-backdrop');
+        const panel = document.getElementById('doc-modal-panel');
+        const frame = document.getElementById('doc-frame');
+        const titleEl = document.getElementById('modal-title');
+
+        function openDocument(title, url) {
+            // Set title
+            titleEl.textContent = title;
+            
+            let finalUrl = url;
+
+            // SMART LINK HANDLING
+            // 1. Check if it's a Google Drive link (drive.google.com OR docs.google.com)
+            if (url.includes('drive.google.com') || url.includes('docs.google.com')) {
+                // Auto-fix: Ensure it uses '/preview' mode
+                // Replace /view or /edit and anything after it with /preview
+                finalUrl = url.replace(/\/view.*/, '/preview').replace(/\/edit.*/, '/preview');
+            } else {
+                // 2. Assume it's a regular PDF (local file)
+                // Add soft protection params
+                finalUrl = url + "#toolbar=0&navpanes=0";
+            }
+            
+            // Set the cleaned URL
+            frame.src = finalUrl;
+            
+            // Show Modal
+            modal.classList.remove('hidden');
+            // Small timeout to allow transition
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                panel.classList.remove('opacity-0', 'scale-95');
+                panel.classList.add('opacity-100', 'scale-100');
+            }, 10);
+            
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDocument() {
+            // Animation out
+            backdrop.classList.add('opacity-0');
+            panel.classList.remove('opacity-100', 'scale-100');
+            panel.classList.add('opacity-0', 'scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                frame.src = ""; // Clear src to stop memory leaks/sound
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Close on backdrop click
+        backdrop.addEventListener('click', closeDocument);
+        
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeDocument();
+            }
+        });
     </script>
 </body>
-
-</html>
