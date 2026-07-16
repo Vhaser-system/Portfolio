@@ -85,6 +85,7 @@
                     <a href="#expertise" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Expertise</a>
                     <a href="#experience" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Experience</a>
                     <a href="#portfolio" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Projects & IP</a>
+                    <a href="#spec-work" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Spec Work</a>
                     <a href="#process" class="text-slate-700 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 px-2 py-2 text-sm font-medium transition-colors">Methodology</a>
                     <a href="#contact" class="bg-brand-600 text-white hover:bg-brand-700 px-4 py-2 rounded-md text-sm font-medium transition-colors shadow-sm">Contact</a>
                     
@@ -115,6 +116,7 @@
                 <a href="#expertise" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Core Expertise</a>
                 <a href="#experience" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Experience</a>
                 <a href="#portfolio" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Projects & IP</a>
+                <a href="#spec-work" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Spec Work</a>
                 <a href="#process" class="block text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 px-3 py-2 rounded-md text-base font-medium">Methodology</a>
             </div>
         </div>
@@ -373,8 +375,55 @@
         </div>
     </section>
 
+    <!-- SPEC WORK (Unofficial Spec Scripts) -->
+    <section id="spec-work" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Spec Work</h2>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Original scenes written for established worlds and casts — unofficial spec scripts across studios and IPs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Spec 1: Baldur's Gate 3 -->
+                <article class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col">
+                    <div class="h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                        <i data-lucide="drama" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold rounded">Larian &middot; Baldur's Gate 3</span>
+                            <span class="px-2 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded">Spec Script &middot; Branching Dialogue</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">The Ward-Stone</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">
+                            A branching-dialogue scene featuring Shadowheart, Lae'zel, Karlach, and Gale &mdash; a moral standoff over a warded relic, with skill checks, approval shifts, and campaign-state flags mapped as in-game.
+                        </p>
+                        <button onclick="openDocument('The Ward-Stone — BG3 Spec Sample', 'documents/The%20Ward-Stone_BG3_Spec.pdf')" class="w-full mt-auto flex items-center justify-center gap-2 px-4 py-2 border border-brand-600 text-brand-600 dark:text-brand-400 rounded-lg hover:bg-brand-50 dark:hover:bg-slate-700 transition-colors font-semibold text-sm">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Read Excerpt
+                        </button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- SPEC WORK DISCLAIMER -->
+            <div class="mt-16 p-6 bg-slate-100 dark:bg-slate-900/60 border-l-4 border-brand-600 dark:border-brand-500 rounded-r-lg shadow-sm">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i data-lucide="info" class="h-6 w-6 text-brand-600 dark:text-brand-400"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">About Spec Work</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mt-1 text-sm leading-relaxed">
+                            Unofficial, non-commercial fan works shared as portfolio writing samples under the respective studios' fan-content policies. All writing is original &mdash; no in-game text is reproduced. Not affiliated with, endorsed by, or sponsored by the respective rights holders. Each rights holder may request removal at any time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- WRITING METHODOLOGY & PROCESS -->
-    <section id="process" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+    <section id="process" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Methodology & Process</h2>
@@ -405,7 +454,7 @@
     </section>
 
     <!-- NEW SECTION: RESEARCH LIBRARY (The Evidence Locker) -->
-    <section id="research-library" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+    <section id="research-library" class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div>
@@ -523,7 +572,7 @@
     </section>
 
     <!-- EDUCATION & ADDITIONAL EXPERIENCE -->
-    <section class="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300">
+    <section class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 
@@ -590,7 +639,7 @@
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-900 dark:text-white">Get In Touch</h2>
-                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Available for freelance commissions and full-time management roles.</p>
+                <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">Available for freelance commissions, narrative/writing roles, and project management positions.</p>
             </div>
 
             <!-- REPLACED: Formspree Contact Form (Free, works with Gmail) -->
