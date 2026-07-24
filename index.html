@@ -699,43 +699,16 @@
                         </div>
                     </div>
 
-                    <!-- Video before/after framing -->
-                    <p class="px-4 pt-6 pb-1 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Output Evidence &middot; Before / After</p>
-                    <p class="px-4 pb-2 text-xs text-slate-500 dark:text-slate-400 italic leading-relaxed">
-                        Same test premise in both clips &mdash; "a caveman fights a tiger," against a flat 2D vector target. What changes between them is the deterministic control applied, not the prompt. Watch the first, then the second, and compare how much the drift comes under control.
-                    </p>
-                    <div class="divide-y divide-slate-100 dark:divide-slate-800">
-
-                        <!-- Video 1: First output ever -->
-                        <div class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg">
-                            <div class="flex items-center gap-4 min-w-0">
-                                <div class="p-2 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded flex-shrink-0">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h4 class="font-semibold text-slate-900 dark:text-white text-sm">Video 1 &mdash; First Output <span class="font-normal text-slate-500 dark:text-slate-400">&middot; the baseline: drift, flicker, 3D creep</span></h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-mono truncate">documents/first_output_ever.mp4</p>
-                                </div>
+                    <!-- Reproducibility caveat (replaces video evidence) -->
+                    <div class="mx-2 mt-3 mb-3 p-4 bg-slate-50 dark:bg-slate-800/40 border-l-4 border-brand-600 dark:border-brand-500 rounded-r-lg">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="git-fork" class="w-5 h-5 text-brand-600 dark:text-brand-400 flex-shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-1">On reproducibility</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    The repository is published to be read and learned from. With their own API keys, anyone can install the pipeline, generate generic flat-2D output, and study the architecture end to end. What they cannot do is reproduce my trained style model, reach anything held privately (training data, production assets, run artifacts), or reuse the code &mdash; the snapshot is released under an all-rights-reserved license for review, not reuse.
+                                </p>
                             </div>
-                            <button onclick="openDocument('Video 1 — First output ever', 'documents/first_output_ever.mp4')" class="ml-4 flex-shrink-0 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors flex items-center gap-1">
-                                Watch <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
-                        </div>
-
-                        <!-- Video 2: Iterating -->
-                        <div class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg">
-                            <div class="flex items-center gap-4 min-w-0">
-                                <div class="p-2 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded flex-shrink-0">
-                                    <i data-lucide="play-circle" class="w-5 h-5"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h4 class="font-semibold text-slate-900 dark:text-white text-sm">Video 2 &mdash; Incremental Improvement <span class="font-normal text-slate-500 dark:text-slate-400">&middot; after style-LoRA + ban-phrase gating + seed locking</span></h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-mono truncate">documents/iterating.mp4</p>
-                                </div>
-                            </div>
-                            <button onclick="openDocument('Video 2 — Iterating', 'documents/iterating.mp4')" class="ml-4 flex-shrink-0 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors flex items-center gap-1">
-                                Watch <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                            </button>
                         </div>
                     </div>
                 </div>
