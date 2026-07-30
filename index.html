@@ -1321,6 +1321,86 @@
                 </button>
               </div>
 
+              <!-- Output video: first render -->
+              <div
+                class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg"
+              >
+                <div class="flex items-center gap-4 min-w-0">
+                  <div
+                    class="p-2 bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 rounded flex-shrink-0"
+                  >
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <h4
+                      class="font-semibold text-slate-900 dark:text-white text-sm"
+                    >
+                      Output Sample 1
+                      <span
+                        class="font-normal text-slate-500 dark:text-slate-400"
+                        >&middot; first end-to-end render</span
+                      >
+                    </h4>
+                    <p
+                      class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-mono truncate"
+                    >
+                      documents/pipeline-output-01-first.mp4
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onclick="
+                    openDocument(
+                      'Output Sample 1 — First End-to-End Render',
+                      'documents/pipeline-output-01-first.mp4',
+                    )
+                  "
+                  class="ml-4 flex-shrink-0 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors flex items-center gap-1"
+                >
+                  Watch <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <!-- Output video: iterated -->
+              <div
+                class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg"
+              >
+                <div class="flex items-center gap-4 min-w-0">
+                  <div
+                    class="p-2 bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400 rounded flex-shrink-0"
+                  >
+                    <i data-lucide="play-circle" class="w-5 h-5"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <h4
+                      class="font-semibold text-slate-900 dark:text-white text-sm"
+                    >
+                      Output Sample 2
+                      <span
+                        class="font-normal text-slate-500 dark:text-slate-400"
+                        >&middot; same pipeline, after iteration</span
+                      >
+                    </h4>
+                    <p
+                      class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-mono truncate"
+                    >
+                      documents/pipeline-output-02-iterated.mp4
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onclick="
+                    openDocument(
+                      'Output Sample 2 — After Iteration',
+                      'documents/pipeline-output-02-iterated.mp4',
+                    )
+                  "
+                  class="ml-4 flex-shrink-0 text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-800 transition-colors flex items-center gap-1"
+                >
+                  Watch <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+
               <!-- Source code (GitHub) -->
               <div
                 class="p-4 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors rounded-lg"
