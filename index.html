@@ -3,16 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julian Visser | Project Manager and Writer</title>
+    <title>Julian Visser | Writer</title>
     <meta
       name="description"
-      content="Portfolio of a professional Project Manager and Writer specializing in technical, creative, and copy writing."
+      content="Portfolio of a writer working across scripts, fiction, and technical documentation."
     />
     <!-- OPEN GRAPH TAGS -->
-    <meta
-      property="og:title"
-      content="Julian Visser | Project Manager and Writer"
-    />
+    <meta property="og:title" content="Julian Visser | Writer" />
     <meta
       property="og:description"
       content="Explore my writing methodology, intellectual property, and professional experience."
@@ -25,7 +22,7 @@
     <meta property="og:type" content="website" />
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="images/profile.jpg" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <!-- CRITICAL: Dark Mode Script (Must be in HEAD to prevent flash of wrong theme) -->
     <script>
@@ -41,39 +38,19 @@
       }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind: pre-compiled. The Play CDN (cdn.tailwindcss.com) was development-only
+         per Tailwind's own docs — it shipped ~400 KB of JS and compiled the CSS in the
+         browser on every visit. styles.css is generated from tailwind.config.js by:
+           npx tailwindcss@3 -c tailwind.config.js -i input.css -o styles.css --minify
+         Re-run that whenever you add or change classes in this file. -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Self-hosted fonts: no request reaches fonts.googleapis.com / fonts.gstatic.com -->
+    <link rel="stylesheet" href="fonts/fonts.css" />
+
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- TAILWIND CONFIG -->
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                50: "#fdf4ff", // Shifted to a more "Creative/Writer" Purple/Slate vibe or kept Blue?
-                // Let's keep the professional Blue but maybe slightly more Slate-ish for a writer.
-                // actually, keeping the Blue/Slate theme is professional.
-                50: "#f0f9ff",
-                100: "#e0f2fe",
-                500: "#0284c7",
-                600: "#0369a1",
-                700: "#0c4a6e",
-                900: "#082f49",
-              },
-            },
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-              serif: ["Merriweather", "serif"], // Added Serif for writing samples
-            },
-          },
-        },
-      };
-    </script>
-
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap");
       body {
         font-family: "Inter", sans-serif;
       }
@@ -241,10 +218,10 @@
           <p
             class="text-lg text-slate-700 dark:text-slate-300 mb-8 max-w-lg mx-auto md:mx-0 font-serif leading-relaxed"
           >
-            I am a Project Manager and Writer with over 3 years of experience
-            bridging the gap between creative vision and structured execution. I
-            specialize in technical documentation, scriptwriting, and managing
-            creative workflows.
+            I write scripts, fiction and technical documentation. What I am best
+            at is taking something complicated and getting it across on the
+            first reading. Three years of self-directed work &mdash; the samples
+            and case studies are below.
           </p>
           <div
             class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
@@ -359,10 +336,11 @@
               <i data-lucide="clipboard-list" class="w-6 h-6"></i>
             </div>
             <h3 class="font-semibold text-lg text-slate-900 dark:text-white">
-              Project Management
+              Delivery &amp; Documentation
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 mt-2">
-              Agile workflows, editorial calendars, and managing creative teams.
+              Schedules, records and studio correspondence; briefs taken to
+              finished work on fixed dates.
             </p>
           </div>
         </div>
@@ -394,10 +372,10 @@
             >
               <div>
                 <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                  Freelance Writer & Project Manager
+                  Independent Writer
                 </h3>
                 <p class="text-brand-600 dark:text-brand-400 font-medium">
-                  Independent Contractor
+                  Self-directed projects
                 </p>
               </div>
               <span
@@ -422,8 +400,9 @@
                 tasks, research, and creative writing.
               </li>
               <li>
-                Executed a rigorous 14-day sprint, moving from concept to a
-                polished 8,000-word draft that is Climate Dispatcher.
+                Wrote <em>The Climate Dispatcher</em> &mdash; 6,507 words
+                against a 7,000-word limit &mdash; in a 14-day sprint, from
+                concept to submitted draft.
               </li>
             </ul>
           </div>
@@ -440,7 +419,7 @@
                   Animation Production Assistant
                 </h3>
                 <p class="text-brand-600 dark:text-brand-400 font-medium">
-                  Internship
+                  Internship &middot; Urrebuk, Rotterdam
                 </p>
               </div>
               <span
@@ -452,12 +431,12 @@
               class="list-disc list-inside space-y-2 text-slate-700 dark:text-slate-300 text-sm"
             >
               <li>
-                Tracked animation deliverables and communications between
-                diverse teams to maintain project schedules.
+                Managed the studio's schedules, files and contracts, and handled
+                its day-to-day email and phone correspondence.
               </li>
               <li>
-                Handled ad-hoc logistical challenges and physical office tasks
-                with a "solution-first" mindset in a fast-paced environment.
+                Attended production meetings, arranged company events, and
+                supported the office relocation.
               </li>
             </ul>
           </div>
@@ -481,7 +460,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1: Book/Novel -->
+          <!-- Project 1: Screenplay (short-story script) -->
           <article
             class="bg-slate-50 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 flex flex-col"
           >
@@ -512,7 +491,7 @@
               <p
                 class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow"
               >
-                A over 8,000-word script exploring themes of survival and moral
+                An 8,534-word screenplay exploring themes of survival and moral
                 conflict...
               </p>
               <!-- NEW: Read Sample Button -->
@@ -557,8 +536,9 @@
               <p
                 class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow"
               >
-                Wrote 10 unpublished script episodes focused on heroes and
-                people who want to be heroes.
+                Wrote all ten episodes of the first season as scripts &mdash;
+                written for animation, not yet produced. The preview below is
+                the opening ten pages of episode one.
               </p>
               <!-- NEW: Read Sample Button -->
               <button
@@ -592,19 +572,19 @@
                 >
               </div>
               <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                Waiting for the Right Moment Short Story
+                The Waiting and the Moment
               </h3>
               <p
                 class="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow"
               >
-                A slow-burn Western short story on a unknown but notorious
+                A slow-burn Western short story about an unknown but notorious
                 outlaw.
               </p>
               <!-- NEW: Read Sample Button -->
               <button
                 onclick="
                   openDocument(
-                    'Short Story 1 Preview',
+                    'The Waiting and the Moment — Preview',
                     'documents/Waiting%20for%20the%20Right%20moment_Preview.pdf',
                   )
                 "
@@ -649,7 +629,7 @@
               <button
                 onclick="
                   openDocument(
-                    'Short Story 2 Preview',
+                    'The Climate Dispatcher — Preview',
                     'documents/Climate%20Dispatcher_Preview.pdf',
                   )
                 "
@@ -1049,7 +1029,7 @@
               <button
                 onclick="
                   openDocument(
-                    'Cyberpunk Genre Deconstruction',
+                    'The Agency Audit: Structural Bias in Cyberpunk',
                     'documents/Cyberpunk%20Deconstruction.pdf',
                   )
                 "
@@ -1085,8 +1065,7 @@
                 class="pl-4 border-l-2 border-slate-200 dark:border-slate-700"
               >
                 <h3 class="font-bold text-lg text-slate-900 dark:text-white">
-                  Bachelor of Creative Business (International Media and
-                  Entertainment Management)
+                  Bachelor of Creative Business
                 </h3>
                 <p class="text-slate-600 dark:text-slate-400">
                   Breda University of Applied Sciences, 2023
@@ -1096,7 +1075,7 @@
                 class="pl-4 border-l-2 border-slate-200 dark:border-slate-700"
               >
                 <h3 class="font-bold text-lg text-slate-900 dark:text-white">
-                  Internationational Baccalaureate Diploma
+                  International Baccalaureate Diploma
                 </h3>
                 <p class="text-slate-600 dark:text-slate-400">
                   Rotterdam International Secondary School, 2018
@@ -1122,8 +1101,10 @@
                   Radio Broadcasting
                 </h3>
                 <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                  Hosted a weekly radio show, hosting guests and friends with
-                  game-related segments.
+                  Co-produced and hosted a weekly show with one partner for a
+                  graded university course at Breda &mdash; guests, game-related
+                  segments, and a new broadcast assessed every week for a
+                  semester.
                 </p>
                 <!-- ADDED: Video Button -->
                 <!-- UPDATED: Pointing to YouTube Embed format as the professional standard -->
@@ -1147,8 +1128,9 @@
                   Animation Production Assistant
                 </h3>
                 <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                  Managed scripts, schedules and visual storytelling for indie
-                  animation projects.
+                  Kept schedules, files and contracts in order at Urrebuk
+                  (Rotterdam), and handled the studio's email and phone
+                  correspondence.
                 </p>
               </div>
               <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-lg">
@@ -1222,14 +1204,14 @@
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
               A self-directed build: an AI-driven flat 2D animation pipeline,
               taken from an ambitious general-purpose platform down to a narrow,
-              demoable product. I'm a writer and project manager, not a trained
-              engineer &mdash; AI wrote the majority of the code; my work was
-              specifying it, reviewing what came back, catching errors before
-              they compounded, and knowing when to stop. It shipped as a public,
-              test-covered repository. I then deliberately wound down the broad
-              version once it was clear it had no defensible market. The
-              documents below cover what I built, where I misjudged the scope,
-              and why stopping was the right call.
+              demoable product. I'm a writer, not a trained engineer &mdash; AI
+              wrote the majority of the code; my work was specifying it,
+              reviewing what came back, catching errors before they compounded,
+              and knowing when to stop. It shipped as a public, test-covered
+              repository. I then deliberately wound down the broad version once
+              it was clear it had no defensible market. The documents below
+              cover what I built, where I misjudged the scope, and why stopping
+              was the right call.
             </p>
           </div>
 
@@ -1703,8 +1685,7 @@
             Get In Touch
           </h2>
           <p class="mt-4 text-lg text-slate-700 dark:text-slate-400">
-            Available for freelance commissions, narrative/writing roles, and
-            project management positions.
+            Available for writing commissions and narrative/writing roles.
           </p>
         </div>
 
@@ -1838,69 +1819,6 @@
               >
                 <p class="text-slate-500">Loading document...</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- NEW: WORKFLOW MODAL (For displaying steps visually) -->
-    <div
-      id="workflow-modal"
-      class="fixed inset-0 z-[70] hidden"
-      aria-labelledby="wf-modal-title"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div
-        class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity opacity-0"
-        id="wf-backdrop"
-      ></div>
-      <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-center justify-center p-4">
-          <div
-            class="relative w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white dark:bg-slate-900 text-left shadow-2xl transition-all opacity-0 scale-95 border border-slate-200 dark:border-slate-700"
-            id="wf-panel"
-          >
-            <div
-              class="bg-brand-50 dark:bg-slate-800/50 px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center"
-            >
-              <h3
-                class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2"
-              >
-                <i
-                  data-lucide="git-branch"
-                  class="w-5 h-5 text-brand-600 dark:text-brand-400"
-                ></i>
-                <span id="wf-title">Process Workflow</span>
-              </h3>
-              <button
-                onclick="closeWorkflow()"
-                class="text-slate-400 hover:text-slate-500 transition-colors"
-              >
-                <i data-lucide="x" class="w-6 h-6"></i>
-              </button>
-            </div>
-
-            <div class="p-8">
-              <!-- Dynamic Content Container -->
-              <div id="wf-content" class="space-y-8 relative">
-                <!-- Vertical Line -->
-                <div
-                  class="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-700 z-0"
-                ></div>
-
-                <!-- Steps will be injected here via JS -->
-              </div>
-            </div>
-
-            <div class="bg-slate-50 dark:bg-slate-800/30 px-6 py-4 text-right">
-              <button
-                onclick="closeWorkflow()"
-                class="px-4 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"
-              >
-                Close Process Map
-              </button>
             </div>
           </div>
         </div>
@@ -2079,134 +1997,6 @@
       if (themeToggleBtn) themeToggleBtn.addEventListener("click", toggleTheme);
       if (themeToggleMobileBtn)
         themeToggleMobileBtn.addEventListener("click", toggleTheme);
-
-      // ----------------------------------------------------
-      // WORKFLOW MODAL LOGIC (New)
-      // ----------------------------------------------------
-      const wfModal = document.getElementById("workflow-modal");
-      const wfBackdrop = document.getElementById("wf-backdrop");
-      const wfPanel = document.getElementById("wf-panel");
-      const wfTitle = document.getElementById("wf-title");
-      const wfContent = document.getElementById("wf-content");
-
-      // Data for workflows
-      const workflows = {
-        geo: {
-          title: "Geopolitical Forecasting Model",
-          steps: [
-            {
-              title: "Prompt & Context Injection",
-              icon: "upload-cloud",
-              desc: "Ingesting historical datasets (1980-2020) and current economic indicators into Gemini 1.5 Pro to establish a factual baseline.",
-            },
-            {
-              title: "Scenario Iteration",
-              icon: "refresh-cw",
-              desc: 'Asking the LLM to generate 3 divergent future scenarios (Utopian, Dystopian, Stagnant) based on specific "What If" parameters (e.g., Oil crisis in 2028).',
-            },
-            {
-              title: "Refinement & Reality Check",
-              icon: "check-circle",
-              desc: "Manually verifying AI outputs against SIPRI military expenditure data and IMF forecasts to ensure narrative plausibility.",
-            },
-          ],
-        },
-        cursor: {
-          title: "Recursive Narrative Workflow",
-          steps: [
-            {
-              title: "Structural Outline (Markdown)",
-              icon: "layout",
-              desc: "Defining the non-linear timeline in a markdown file. Using Cursor to identify plot holes and pacing inconsistencies in the skeleton.",
-            },
-            {
-              title: "AI Autocomplete Draft",
-              icon: "zap",
-              desc: "Using Copilot/Cursor features to flesh out scene descriptions and dialogue beats, treating prose generation like code completion.",
-            },
-            {
-              title: "Refactoring & Polishing",
-              icon: "scissors",
-              desc: 'Iterative rewriting. Asking the AI to "Refactor" a paragraph for brevity or tone shift, similar to optimizing a code block.',
-            },
-          ],
-        },
-        history: {
-          title: "Historical Synthesis Loop",
-          steps: [
-            {
-              title: "Source Ingestion",
-              icon: "database",
-              desc: "Feeding OCR scans of primary source documents (19th-century letters, manifests) into the context window.",
-            },
-            {
-              title: "Synthesis Query",
-              icon: "search",
-              desc: "Prompting ChatGPT to extract key themes, dates, and conflicting accounts from the raw data.",
-            },
-            {
-              title: "Citation Verification",
-              icon: "shield-check",
-              desc: "Cross-referencing the AI summary against the original text to generate a final, footnoted research abstract.",
-            },
-          ],
-        },
-      };
-
-      function openWorkflow(key) {
-        const data = workflows[key];
-        if (!data) return;
-
-        wfTitle.textContent = data.title;
-
-        // Generate HTML for steps
-        const stepsHtml = `
-                <div class="absolute left-[19px] top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-700 z-0"></div>
-                ${data.steps
-                  .map(
-                    (step, index) => `
-                    <div class="relative z-10 flex items-start group">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-900 border-2 border-white dark:border-slate-800 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold shadow-sm">
-                            <i data-lucide="${step.icon}" class="w-5 h-5"></i>
-                        </div>
-                        <div class="ml-6 bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700 w-full hover:border-brand-300 dark:hover:border-brand-700 transition-colors">
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white flex justify-between">
-                                ${step.title}
-                                <span class="text-xs text-slate-400 font-normal uppercase tracking-wide">Step 0${index + 1}</span>
-                            </h4>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed">${step.desc}</p>
-                        </div>
-                    </div>
-                `,
-                  )
-                  .join("")}
-            `;
-
-        wfContent.innerHTML = stepsHtml;
-        lucide.createIcons(); // Re-init icons for new content
-
-        // Show Modal
-        wfModal.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-
-        setTimeout(() => {
-          wfBackdrop.classList.remove("opacity-0");
-          wfPanel.classList.remove("opacity-0", "scale-95");
-          wfPanel.classList.add("opacity-100", "scale-100");
-        }, 10);
-      }
-
-      function closeWorkflow() {
-        wfBackdrop.classList.add("opacity-0");
-        wfPanel.classList.remove("opacity-100", "scale-100");
-        wfPanel.classList.add("opacity-0", "scale-95");
-        setTimeout(() => {
-          wfModal.classList.add("hidden");
-          document.body.style.overflow = "";
-        }, 300);
-      }
-
-      wfBackdrop.addEventListener("click", closeWorkflow);
 
       // ----------------------------------------------------
       // DOCUMENT MODAL LOGIC
